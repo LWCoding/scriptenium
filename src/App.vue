@@ -1,30 +1,38 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view />
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@800&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+h1, h2, h3, h4, h5, h6, p, a, a:visited, button {
+  font-family: "Montserrat";
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+a, a:visited {
+  text-decoration: none;
+  color: rgb(38, 38, 168);
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.button-link {
+  background: rgb(230, 153, 12) !important; 
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.spacer {
+  height: 4vh;
 }
 </style>

@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+  <Header msg="We'll help you get there, one step at a time." content="With Scriptenium, you can learn how to program in a relaxing, filler-free, readily-available way!" />
+  <div class="spacer" />
+  <InfoRow />
+  <div class="spacer" />
+  <UI />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import Header from "@/components/Header.vue";
+import InfoRow from "@/components/InfoRow.vue";
+import UI from "@/components/UI.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
-    HelloWorld,
+    Header, UI, InfoRow
   },
+  watch: {
+        $route: {
+            immediate: true,
+            handler(to, from) {
+                document.title = "Homepage | Scriptenium";
+            }
+        },
+    }
 });
 </script>
