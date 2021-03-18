@@ -63,6 +63,9 @@ export default defineComponent({
       margin-bottom: 2em;
       width: 150px;
     }
+    .content-block:last-child {
+      grid-column: span 2;
+    }
     .content-block p {
       margin: 10px auto 15px auto;
     }

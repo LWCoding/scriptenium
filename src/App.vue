@@ -21,6 +21,18 @@ a, a:visited {
   color: rgb(38, 38, 168);
 }
 
+button {
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .button-link {
   background: rgb(230, 153, 12) !important; 
   color: white !important;
@@ -33,6 +45,6 @@ html {
 }
 
 .spacer {
-  height: 4vh;
+  height: 8vh;
 }
 </style>
