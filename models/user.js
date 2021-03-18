@@ -6,14 +6,14 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
-        minLength: 6,
+        minLength: 4,
         maxLength: 16,
         unique: true
     },
     password: {
         type: String,
         required: true,
-        minLength: 6
+        minLength: 8
     },
     token: {
         type: String,

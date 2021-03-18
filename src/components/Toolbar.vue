@@ -1,16 +1,34 @@
 <template>
     <img src="../assets/logo.png" id="bg-logo" onclick="window.location.href = '/'">
-    <div id="account">
-    <a class="button-link" id="signup" href="/login">Sign Up</a> 
-    <a class="button-link" href="/login">Log In</a>
+    <div id="account" :style='{"display": (computed) ? "" : "none"}'>
+      <a class="button-link" id="signup" href="/register" :style='{"display": (logged) ? "none": ""}'>Sign Up</a> 
+      <a class="button-link" href="/login" :style='{"display": (logged) ? "none": ""}'>Log In</a>
+      <a class="button-link" href="/account" :style='{"display": (logged) ? "": "none"}'>Account</a>
     </div>
     <div id="pale-toolbar"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import axios from "axios";
 export default defineComponent({
-  name: "Toolbar"
+  name: "Toolbar",
+  data() {
+    return {
+      logged: false,
+      computed: false
+    }
+  },
+  created() {
+    axios.get("/logged-in").then(() => {
+      this.logged = true
+      this.computed = true
+      return
+    }).catch((error) => {
+      this.computed = true
+      return // Not logged in
+    })
+  }
 });
 </script>
 

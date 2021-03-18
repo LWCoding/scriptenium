@@ -5,12 +5,14 @@
       <img src="../assets/database.jpg" id="bg-image">
       <div id="message">
         <div id="data-form">
-            <h1>Login</h1>
-            <form id="login" @submit="submitForm($event)">
+            <h1>Register</h1>
+            <form id="register" @submit="submitForm($event)">
                 <label for="username">Username</label>
                 <input v-model="username" type="text" id="username" autocomplete="off">
                 <label for="password">Password</label>
                 <input v-model="password" type="password" id="password" autocomplete="off">
+                <label for="reenter">Reenter Password</label>
+                <input v-model="reenter" type="text" id="reenter" autocomplete="off">
                 <input type="submit" value="Sign In">
             </form>
             <p id="response" v-bind:class='{"isShowing": response != "", "isSuccess": success}'>{{response}}</p>
@@ -26,7 +28,7 @@ import axios from "axios";
 import Toolbar from "@/components/Toolbar.vue";
 
 export default defineComponent({
-  name: "Login",
+  name: "Register",
   components: { 
     Toolbar
   },
@@ -34,6 +36,7 @@ export default defineComponent({
     return {
       username: "",
       password: "",
+      reenter: "",
       response: "",
       success: false
     }
@@ -41,16 +44,29 @@ export default defineComponent({
   methods: {
     submitForm: async function(event : any) : Promise<void> {
       event.preventDefault()
-      if (!this.username || !this.password) {
+      if (!this.username || !this.password || !this.reenter) {
         this.response = "Please fill out all required fields."
         this.success = false
         return
       }
-      this.response = "Logging in..."
+      if (this.username.length < 6) {
+        this.success = false
+        this.response = "Username needs to be at least 4 characters."
+        return
+      } else if (this.username.length > 16) {
+        this.success = false
+        this.response = "Username must not be longer than 16 characters."
+      } else if (this.password.length < 6) {
+        this.success = false
+        this.response = "Password needs to be at least 8 characters."
+        return
+      }
+      this.response = "Creating account..."
       this.success = true
-      const res = axios.post("/login", {
+      const res = axios.post("/register", {
         username: this.username,
         password: this.password,
+        reenter: this.reenter
       }).then((res) => {
         window.location.href = "/account"
       }).catch((error) => {
@@ -70,7 +86,7 @@ export default defineComponent({
     $route: {
         immediate: true,
         handler(to, from) {
-            document.title = "Login | Scriptenium";
+            document.title = "Register | Scriptenium";
         }
     },
   }
@@ -132,7 +148,7 @@ export default defineComponent({
       color: white;
   }
 
-  #username, #password {
+  #username, #password, #reenter {
       margin-bottom: 0.6em;
   }
 
