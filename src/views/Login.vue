@@ -3,7 +3,7 @@
     <Toolbar />
     <div id="image-overlay">
       <img src="../assets/database.jpg" id="bg-image">
-      
+      <h1 style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%); color: white;">This is currently a work in progress.</h1>
     </div>
   </div>
 </template>

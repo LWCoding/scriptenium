@@ -1,7 +1,7 @@
 <template>
   <div id="main">
     <Toolbar />
-
+    <h1 style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%);">This is currently a work in progress.</h1>
   </div>
 </template>
 

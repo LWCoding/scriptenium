@@ -75,6 +75,9 @@ export default defineComponent({
       padding: 0 4vw;
       grid-template-columns: 1fr;
     }
+    .content-block:last-child {
+      grid-column: span 1;
+    }
     .content-block img {
       width: 120px;
     }
