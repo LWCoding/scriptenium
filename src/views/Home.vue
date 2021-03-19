@@ -88,6 +88,7 @@ export default defineComponent({
   @media only screen and (max-width: 670px) {
     #bg-text-msg {
       font-size: 40px;
+      margin-top: 0 !important;
     }
     #bg-text-content {
       font-size: 18px;
@@ -103,6 +104,7 @@ export default defineComponent({
     #bg-text-msg {
       font-size: 34px;
       margin-bottom: 0.2em;
+      margin-top: 0 !important;
     }
     #bg-text-content {
       margin-bottom: 1.6em;
