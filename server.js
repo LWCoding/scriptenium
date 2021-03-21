@@ -24,7 +24,9 @@ app.use(session({
 }))
 
 const userRouter = require("./routers/users.js")
+const courseRouter = require("./routers/courses.js")
 app.use(userRouter)
+app.use(courseRouter)
 
 app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, '/dist/index.html'))

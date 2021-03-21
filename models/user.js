@@ -30,7 +30,13 @@ const userSchema = mongoose.Schema({
     xpNeeded: {
         type: Number,
         default: 100
-    }
+    },
+    courses: [{
+        title: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
 userSchema.methods.toJSON = function() {

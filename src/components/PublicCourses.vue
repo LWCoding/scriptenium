@@ -1,12 +1,7 @@
 <template>
     <div id="section">
-        <div id="left-column">
-
-        </div>
-        <div id="right-column">
-            <div style="height: 3vh;" />
-            <Course />
-            <Course />
+        <div id="column">
+            <Course v-for="course in courses" :enrolled="false" :key="course._id" :title="course.title" :desc="course.description" :thumbnail="course.thumbnail" :tags="course.tags.split(' ')" v-on:enrollCourse="enrollCourse" />
         </div>
     </div>
 </template>
@@ -19,7 +14,13 @@ export default defineComponent({
     name: "PublicCourses",
     components: {
         Course
-    }
+    },
+    methods: {
+        enrollCourse(value : string) {
+            this.$emit("enrollCourse", value)
+        }
+    },
+    props: ["courses"]
 });
 </script>
 
@@ -28,33 +29,33 @@ export default defineComponent({
         width: 90%;
         height: 100%;
         text-align: center;
-        display: flex;
-        flex-direction: row;
         margin-right: 5vw;
         margin-left: 5vw;
     }
-    #left-column {
-        background: gray;
-        width: 35%;
-        height: 100%
-    }
-    #right-column {
-        background: coral;
-        width: 65%;
+    #column {
+        background: rgb(134, 141, 134);
+        padding-top: 3vh;
+        width: 100%;
         height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(10, 1fr);
         overflow-y: scroll;
+        position: relative;
     }
-    @media only screen and (max-width: 700px) {
-        #section {
-            flex-direction: column;
-        }
-        #left-column {
-            width: 100%;
-            height: 35%;
-        }
-        #right-column {
-            width: 100%;
-            height: 65%;
+    #column:empty::after {
+        content: "You've enrolled in every course... Impressive.";
+        color: white;
+        font-family: "Montserrat";
+        position: absolute;
+        font-size: 24px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @media only screen and (max-width: 1100px) {
+        #column {
+            grid-template-columns: 1fr;
         }
     }
 </style>
