@@ -12,7 +12,7 @@
                 <label for="password">Password</label>
                 <input v-model="password" type="password" id="password" autocomplete="off">
                 <label for="reenter">Reenter Password</label>
-                <input v-model="reenter" type="text" id="reenter" autocomplete="off">
+                <input v-model="reenter" type="password" id="reenter" autocomplete="off">
                 <input type="submit" value="Sign In">
             </form>
             <p id="response" v-bind:class='{"isShowing": response != "", "isSuccess": success}'>{{response}}</p>

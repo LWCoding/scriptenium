@@ -14,11 +14,15 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import("../views/Account.vue"),
     beforeEnter(from, to, next) {
-      axios.get("/logged-in").then((res) => {
+      if (process.env.NODE_ENV === "production") {
+        axios.get("/logged-in").then((res) => {
+          next()
+        }).catch(() => {
+          next("/login")
+        })
+      } else {
         next()
-      }).catch(() => {
-        next("/login")
-      })
+      }
     }
   },
   {

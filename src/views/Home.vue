@@ -104,7 +104,6 @@ export default defineComponent({
     #bg-text-msg {
       font-size: 34px;
       margin-bottom: 0.2em;
-      margin-top: 0 !important;
     }
     #bg-text-content {
       margin-bottom: 1.6em;

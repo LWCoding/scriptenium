@@ -1,9 +1,7 @@
 <template>
     <img src="../assets/logo.png" id="bg-logo" onclick="window.location.href = '/'">
-    <div id="account" :style='{"display": (computed) ? "" : "none"}'>
-      <a class="button-link" id="signup" href="/register" :style='{"display": (logged) ? "none": ""}'>Sign Up</a> 
-      <a class="button-link" href="/login" :style='{"display": (logged) ? "none": ""}'>Log In</a>
-      <a class="button-link" href="/account" :style='{"display": (logged) ? "": "none"}'>Account</a>
+    <div id="account">
+      <span id="level">Level {{level}} ({{xp}} / {{xpNeeded}})</span>
     </div>
     <div id="pale-toolbar"></div>
 </template>
@@ -12,21 +10,23 @@
 import { defineComponent } from "vue";
 import axios from "axios";
 export default defineComponent({
-  name: "Toolbar",
+  name: "CreditToolbar",
   data() {
     return {
-      logged: false,
-      computed: false
+      level: 1,
+      xp: 0,
+      xpNeeded: 100
     }
   },
   created() {
-    axios.get("/logged-in").then(() => {
-      this.logged = true
-      this.computed = true
+    axios.get("/logged-in").then((res) => {
+      let user = res.data.user
+      this.level = user.level
+      this.xp = user.xp
+      this.xpNeeded = user.xpNeeded
       return
     }).catch((error) => {
-      this.computed = true
-      return // Not logged in
+      return
     })
   }
 });
@@ -35,6 +35,10 @@ export default defineComponent({
 <style lang="scss" scoped>
   $background-offset: 76px;
 
+  #level {
+    color: white;
+    font-size: 18px;
+  }
   #pale-toolbar {
     top: 0;
     left: 0;

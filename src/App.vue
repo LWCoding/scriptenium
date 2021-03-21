@@ -12,17 +12,13 @@
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, a:visited, button {
+h1, h2, h3, h4, h5, h6, p, a, a:visited, button, span {
   font-family: "Montserrat";
 }
 
 a, a:visited {
   text-decoration: none;
   color: rgb(38, 38, 168);
-}
-
-button {
-  border: none;
 }
 
 button:focus {

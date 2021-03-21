@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
-const userSchema = mongoose.Schema({
+const courseSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -54,6 +54,6 @@ userSchema.methods.generateAuthToken = async function() {
     return token
 }
 
-const userModel = mongoose.model("User", userSchema)
+const courseModel = mongoose.model("Course", courseSchema)
 
-module.exports = userModel
+module.exports = courseModel
