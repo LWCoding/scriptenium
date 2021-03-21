@@ -131,6 +131,7 @@ export default defineComponent({
         height: 180px;
         width: 180px;
         padding: 10px;
+        margin: auto 0;
         background: white;
         margin-left: 2vw;
         margin-right: 2vw;

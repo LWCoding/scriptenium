@@ -2,7 +2,7 @@
     <div id="section">
         <div id="avatar-div">
             <img id="avatar" src="../assets/avatar.png">
-            <h2 id="avatar-overlay">{{username}}'s Profile</h2>
+            <h2 id="avatar-overlay">{{username}}</h2>
         </div>
         <div class="two-columns column">
             <h2 id="checkup-text">Check back regularly and see your stats change!</h2>
@@ -89,6 +89,7 @@ export default defineComponent({
     }
     #avatar-overlay {
         position: absolute;
+        word-break: break-word;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);

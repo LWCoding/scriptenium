@@ -56,6 +56,7 @@ export default defineComponent({
       } else if (this.username.length > 16) {
         this.success = false
         this.response = "Username must not be longer than 16 characters."
+        return
       } else if (this.password.length < 6) {
         this.success = false
         this.response = "Password needs to be at least 8 characters."
